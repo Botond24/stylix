@@ -1,6 +1,5 @@
-{ lib, ... }:
-{
+{ lib, ... }: {
   name = "Dunst";
   homepage = "https://dunst-project.org";
-  maintainers = [ lib.maintainers.naho ];
+  maintainers = [ lib.maintainers.noahbiewesch ];
 }

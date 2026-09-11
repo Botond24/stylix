@@ -28,42 +28,33 @@ mkTarget {
   autoEnableExpr = "pkgs.stdenv.hostPlatform.isLinux";
 
   config = [
-    (
-      { image }:
-      {
-        dconf.settings."org/gnome/desktop/background" = {
-          picture-uri = "file://${image}";
-          picture-uri-dark = "file://${image}";
-        };
-      }
-    )
-    (
-      { imageScalingMode }:
-      {
-        dconf.settings."org/gnome/desktop/background".picture-options =
-          if imageScalingMode == "fit" then
-            "scaled"
-          else if imageScalingMode == "fill" then
-            "zoom"
-          else if imageScalingMode == "stretch" then
-            "stretched"
-          else if imageScalingMode == "center" then
-            "centered"
-          # Seemingly no tile support... :(
-          else
-            "zoom";
-      }
-    )
-    (
-      { polarity }:
-      {
-        # We show the same colours regardless of this setting, and the quick
-        # settings tile is removed. The value is still used by Epiphany to
-        # request dark mode for websites which support it.
-        dconf.settings."org/gnome/desktop/interface".color-scheme =
-          if polarity == "dark" then "prefer-dark" else "default";
-      }
-    )
+    ({ image }: {
+      dconf.settings."org/gnome/desktop/background" = {
+        picture-uri = "file://${image}";
+        picture-uri-dark = "file://${image}";
+      };
+    })
+    ({ imageScalingMode }: {
+      dconf.settings."org/gnome/desktop/background".picture-options =
+        if imageScalingMode == "fit" then
+          "scaled"
+        else if imageScalingMode == "fill" then
+          "zoom"
+        else if imageScalingMode == "stretch" then
+          "stretched"
+        else if imageScalingMode == "center" then
+          "centered"
+        # Seemingly no tile support... :(
+        else
+          "zoom";
+    })
+    ({ polarity }: {
+      # We show the same colours regardless of this setting, and the quick
+      # settings tile is removed. The value is still used by Epiphany to
+      # request dark mode for websites which support it.
+      dconf.settings."org/gnome/desktop/interface".color-scheme =
+        if polarity == "dark" then "prefer-dark" else "default";
+    })
     (
       { fonts }:
       let
@@ -137,12 +128,17 @@ mkTarget {
           };
 
           # Enable the extension after logging in.
-          configFile."autostart/stylix-activate-gnome.desktop".text = ''
-            [Desktop Entry]
-            Type=Application
-            Exec=${lib.getExe activator} enable
-            Name=Stylix: enable User Themes extension for GNOME Shell
-          '';
+          autostart = {
+            enable = true;
+            entries = lib.singleton (
+              pkgs.makeDesktopItem {
+                name = "stylix-activate-gnome";
+                desktopName = "Stylix: enable User Themes extension for GNOME Shell";
+                exec = "${lib.getExe activator} enable";
+              }
+              + /share/applications/stylix-activate-gnome.desktop
+            );
+          };
         };
       }
     )

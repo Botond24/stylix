@@ -1,6 +1,5 @@
-{ lib, ... }:
-{
+{ lib, ... }: {
   name = "swaylock";
   homepage = "https://github.com/swaywm/swaylock";
-  maintainers = [ lib.maintainers.naho ];
+  maintainers = [ lib.maintainers.noahbiewesch ];
 }

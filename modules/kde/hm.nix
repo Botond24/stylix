@@ -13,7 +13,7 @@ let
   mergeWithImage =
     default: withImage:
     let
-      satisfies = check: (check default) && (check withImage);
+      satisfies = check: check default && check withImage;
     in
     if image == null || !cfg.useWallpaper then
       default
@@ -278,9 +278,9 @@ let
           kded5rc = formatConfig kded5rc;
           kdeglobals = formatConfig kdeglobals;
         }
-        // (lib.optionalAttrs (config.stylix.cursor != null) {
+        // lib.optionalAttrs (config.stylix.cursor != null) {
           kcminputrc = formatConfig kcminputrc;
-        })
+        }
       )
       (
         ''
@@ -289,9 +289,9 @@ let
           printf '%s\n' "$kded5rc" >"$out/kded5rc"
           printf '%s\n' "$kdeglobals" >"$out/kdeglobals"
         ''
-        + (lib.optionalString (
+        + lib.optionalString (
           config.stylix.cursor != null
-        ) ''printf '%s\n' "$kcminputrc" >"$out/kcminputrc"'')
+        ) ''printf '%s\n' "$kcminputrc" >"$out/kcminputrc"''
       );
 
   # plasma-apply-wallpaperimage is necessary to change the wallpaper
@@ -438,13 +438,18 @@ in
 
           # This desktop entry will run the theme activator when a new Plasma session is started
           # Note: This doesn't run again if a new homeConfiguration is activated from a running Plasma session
-          configFile."autostart/stylix-activate-kde.desktop".text = ''
-            [Desktop Entry]
-            Type=Application
-            Exec=${activator}
-            Name=Stylix: activate KDE theme
-            X-KDE-AutostartScript=true
-          '';
+          autostart = {
+            enable = true;
+            entries = lib.singleton (
+              pkgs.makeDesktopItem {
+                name = "stylix-activate-kde";
+                desktopName = "Stylix: activate KDE theme";
+                exec = activator;
+                extraConfig.X-KDE-AutostartScript = "true";
+              }
+              + /share/applications/stylix-activate-kde.desktop
+            );
+          };
         };
       };
 }

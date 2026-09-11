@@ -32,15 +32,13 @@ mkTarget {
       # programs.dconf.enable = true; required in system config
       gtk.enable = true;
     }
-    (
-      { fonts }:
-      {
-        gtk.font = {
-          inherit (fonts.sansSerif) package name;
-          size = fonts.sizes.applications;
-        };
-      }
-    )
+    ({ cursor }: { home.pointerCursor.gtk.enable = true; })
+    ({ fonts }: {
+      gtk.font = {
+        inherit (fonts.sansSerif) package name;
+        size = fonts.sizes.applications;
+      };
+    })
     (
       { cfg, colors }:
       let
@@ -60,6 +58,7 @@ mkTarget {
             package = pkgs.adw-gtk3;
             name = "adw-gtk3";
           };
+          gtk.gtk4.theme = config.gtk.theme;
 
           xdg.configFile = {
             "gtk-3.0/gtk.css".source = finalCss;

@@ -30,6 +30,12 @@
     githubId = 64027365;
     name = "Erin Pletches";
   };
+  Lyndeno = {
+    email = "lsanche@lyndeno.ca";
+    github = "Lyndeno";
+    githubId = 13490857;
+    name = "Lyndon Sanche";
+  };
   MrSom3body = {
     email = "nix@sndh.dev";
     github = "MrSom3body";
@@ -48,6 +54,15 @@
     githubId = 12480453;
     matrix = "@noodlez1232:matrix.org";
     name = "Nathaniel Barragan";
+  };
+  Swarsel = {
+    email = "leon@swarsel.win";
+    github = "Swarsel";
+    githubId = 32304731;
+    keys = [
+      { fingerprint = "4BE7 9252 6228 9B47 6DBB  C17B 76FD 3810 215A E097"; }
+    ];
+    name = "Leon Schwarzäugl";
   };
   TheColorman = {
     email = "nixpkgs@colorman.me";
@@ -69,6 +84,12 @@
     github = "ajgon";
     githubId = 150545;
     name = "Igor Rzegocki";
+  };
+  andrebclark = {
+    email = "andre@cosmicdivision.dev";
+    github = "andrebclark";
+    githubId = 48167848;
+    name = "Andre B Clark";
   };
   arunoruto = {
     email = "mirza.arnaut45@gmail.com";
@@ -97,6 +118,18 @@
     githubId = 86579;
     name = "Chet Luther";
   };
+  csanthiago = {
+    email = "git@csanthiago.dev";
+    github = "csanthiago";
+    githubId = 8346803;
+    name = "Cirios Santhiago";
+  };
+  cswimr = {
+    email = "cswimr@csw.im";
+    github = "cswimr";
+    githubId = 102361830;
+    name = "cswimr";
+  };
   danth = {
     email = "danth@danth.me";
     github = "danth";
@@ -123,6 +156,11 @@
     github = "gideonwolfe";
     githubId = 32942052;
     name = "Gideon Wolfe";
+  };
+  glyxambi = {
+    github = "glyxambi";
+    githubId = 213202364;
+    name = "glyxambi";
   };
   justdeeevin = {
     email = "devin.droddy@gmail.com";
@@ -189,9 +227,6 @@
     email = "nukdokplex@nukdokplex.ru";
     github = "nukdokplex";
     githubId = 25458915;
-    keys = [
-      { fingerprint = "7CE2 4C42 942D 58EA 99F6  F00A A47E 7374 3EF6 FCC4"; }
-    ];
     name = "Viktor Titov";
   };
   omega-800 = {
@@ -228,25 +263,33 @@
     githubId = 63157919;
     name = "Alexander";
   };
+  saadndm = {
+    email = "saad29nadeem@gmail.com";
+    github = "saadndm";
+    githubId = 88615188;
+    name = "Saad Nadeem";
+  };
   skiletro = {
     email = "git@skilet.ro";
     github = "skiletro";
     githubId = 19377854;
     name = "jamie";
   };
-  skoove = {
-    email = "zie@sturges.com.au";
-    github = "skoove";
-    githubId = 53106860;
-    name = "Zie Sturges";
+  thbemme = {
+    email = "thomas.bemme@gmail.com";
+    github = "thbemme";
+    githubId = 14074615;
+    matrix = "@riza:chaos.jetzt";
+    name = "Thomas Bemme";
   };
   trueNAHO = {
+    email = "nix@noahbiewesch.com";
     github = "trueNAHO";
     githubId = 90870942;
     keys = [
       { fingerprint = "5FC6 088A FB1A 609D 4532  F919 0C1C 177B 3B64 68E0"; }
     ];
-    name = "Noah Pierre Biewesch";
+    name = "Noah Biewesch";
   };
   vidhanio = {
     email = "me@vidhan.io";

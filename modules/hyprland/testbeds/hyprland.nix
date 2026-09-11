@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ lib, pkgs, ... }: {
   stylix.testbed.ui = {
     graphicalEnvironment = "hyprland";
 
@@ -7,6 +6,12 @@
     application = {
       name = "kitty";
       package = pkgs.kitty;
+    };
+  };
+
+  home-manager.sharedModules = lib.singleton {
+    wayland.windowManager.hyprland = {
+      configType = "hyprlang";
     };
   };
 }

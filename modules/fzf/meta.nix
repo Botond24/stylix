@@ -1,6 +1,5 @@
-{ lib, ... }:
-{
+{ lib, ... }: {
   name = "fzf";
   homepage = "https://github.com/junegunn/fzf";
-  maintainers = [ lib.maintainers.naho ];
+  maintainers = [ lib.maintainers.noahbiewesch ];
 }

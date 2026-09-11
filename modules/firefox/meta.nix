@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{ lib, ... }: {
   name = "Firefox and its derivatives";
   homepage = {
     Firefox = "http://www.mozilla.com/en-US/firefox";
@@ -8,8 +7,7 @@
   };
   maintainers = with lib.maintainers; [
     Flameopathic
-    danth
-    naho
+    noahbiewesch
   ];
   description = ''
     This module supports [Firefox](https://www.mozilla.org/firefox), in addition

@@ -49,6 +49,12 @@ let
         {
           path = [
             "stylix"
+            "enableReleaseChecks"
+          ];
+        }
+        {
+          path = [
+            "stylix"
             "fonts"
             "emoji"
           ];
@@ -223,11 +229,17 @@ in
           ]
           ++ lib.optionals config.stylix.homeManagerIntegration.followSystem copyModules;
         })
-        (lib.mkIf config.home-manager.useGlobalPkgs {
-          home-manager.sharedModules = lib.singleton {
-            config.stylix.overlays.enable = false;
-          };
-        })
+        (lib.mkIf
+          (
+            config.stylix.homeManagerIntegration.autoImport
+            && config.home-manager.useGlobalPkgs
+          )
+          {
+            home-manager.sharedModules = lib.singleton {
+              config.stylix.overlays.enable = false;
+            };
+          }
+        )
       ]
     )
   );

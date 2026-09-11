@@ -26,18 +26,18 @@ jobs:
     name: label-pr
     runs-on: ubuntu-24.04
     if: >
-      vars.APP_ID &&
+      vars.APP_CLIENT_ID &&
       !contains(github.event.pull_request.title, '[skip treewide]')
     steps:
       - uses: actions/create-github-app-token@v3
         id: app-token
         with:
-          app-id: ${{ vars.APP_ID }}
+          client-id: ${{ vars.APP_CLIENT_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
           permission-contents: read
           permission-pull-requests: write
 
-      - uses: actions/labeler@v6.0.1
+      - uses: actions/labeler@v6.1.0
         with:
           repo-token: ${{ steps.app-token.outputs.token }}
           configuration-path: .github/labeler.yml

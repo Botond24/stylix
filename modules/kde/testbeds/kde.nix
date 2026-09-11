@@ -1,5 +1,4 @@
-{ lib, pkgs, ... }:
-{
+{ lib, pkgs, ... }: {
   config = {
     stylix.testbed.ui.graphicalEnvironment = "kde";
 
@@ -13,7 +12,6 @@
       };
       home.packages = with pkgs; [
         darkly
-        darkly-qt5
         utterly-round-plasma-style
       ];
     };
